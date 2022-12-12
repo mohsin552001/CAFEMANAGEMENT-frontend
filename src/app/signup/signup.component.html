@@ -1,0 +1,98 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row fxLayout="row">
+    <span class="title-center">signUp</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="signUpform">
+    <div fxFlex fxLayout="column">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required="" />
+        <mat-error
+          *ngIf="
+            signUpform.controls.name.touched && signUpform.controls.name.invalid
+          "
+        >
+          <span *ngIf="signUpform.controls.name.errors.required"
+            >this field is mandatory
+          </span>
+          <span *ngIf="signUpform.controls.name.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>email</mat-label>
+        <input matInput formControlName="email" />
+        <mat-error
+          *ngIf="
+            signUpform.controls.email.touched &&
+            signUpform.controls.email.invalid
+          "
+        >
+          <span *ngIf="signUpform.controls.email.errors.required"
+            >this field is mandatory
+          </span>
+          <span *ngIf="signUpform.controls.email.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>ContactNumber</mat-label>
+        <input matInput formControlName="contactNumber" required="" />
+        <mat-error
+          *ngIf="
+            signUpform.controls.contactNumber.touched &&
+            signUpform.controls.contactNumber.invalid
+          "
+        >
+          <span *ngIf="signUpform.controls.contactNumber.errors.required"
+            >this field is mandatory
+          </span>
+          <span *ngIf="signUpform.controls.contactNumber.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          type="password"
+          required=""
+        />
+        <mat-error
+          *ngIf="
+            signUpform.controls.password.touched &&
+            signUpform.controls.password.invalid
+          "
+        >
+          <span *ngIf="signUpform.controls.password.errors.required"
+            >this field is mandatory
+          </span>
+          <span *ngIf="signUpform.controls.password.errors.pattern"
+            >this field is invalid</span
+          >
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    (click)="handleSubmit()"
+    [disabled]="!(signUpform.valid && signUpform.dirty)"
+  >
+    SignUp
+  </button>
+  <button mat-raised-button color="primary" mat-dialog-close>close</button>
+</mat-dialog-actions>

@@ -1,0 +1,17 @@
+<mat-nav-list>
+  <mat-list-item
+
+    *ngFor="let menuitem of menuitems.getMenuItem()"
+    routerLinkActive="selected"
+  >
+    <a
+
+      [routerLink]="['/cafe', menuitem.state]"
+      *ngIf="menuitem.role === '' || menuitem.role === tokenpayload.role"
+    >
+      <mat-icon>{{menuitem.icon}}</mat-icon>
+      <span>{{ menuitem.name }}</span>
+      <span fxFlex></span>
+    </a>
+  </mat-list-item>
+</mat-nav-list>
